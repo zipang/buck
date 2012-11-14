@@ -1,0 +1,38 @@
+{
+  "name": "buck",
+  "version": "0.1.0",
+  "description": "var $ = require('buck'); // who needs buck anyway?",
+  "main": "./lib/buck",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "node ./tests/runtests.js",
+    "build": "./build/build.sh"
+  },
+  "dependencies": {
+    "jsdom": ">=0.2",
+    "Deferred": "0.1.x"
+  },
+  "devDependencies": {
+    "vows": ">=0.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zipang/buck.git"
+  },
+  "scripts": {
+    "test": "vows tests/main-test.js --spec"
+  },
+  "keywords": [
+    "$",
+    "jquery",
+    "jquip",
+    "dom",
+    "nodejs",
+    "Deferred",
+    "promise"
+  ],
+  "author": "Eidolon Labs (zipang)",
+  "license": "MIT"
+}
