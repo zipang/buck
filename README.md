@@ -12,29 +12,48 @@ Who needs buck anyway?
 What for?
 ---------
 
+Parse, Manipulate, Create new HTML content with your favorite jQuery-flavored API.
+
 ```js
-	var parseMyPage = $.fetchDocument("http://mypage.com");
+	// load an external document
+	var parse = $.fetchDocument("http://mypage.com");
 
-	parseMyPage.done(
+	parse.done(
 		function($) {
+			// this is tied to the newly parsed document
 			console.log("Successfully parsed document " + this.title);
+			// the new $ var is tied to the document context
 			var articleTitle = $("article h1").text();
-
+			// (...)
 		}
 	);
 
 ```
 
-Buck brings DOM manipulation with your favorite $ library to node.js
-
-Buck is loaded once and for all, but can be tied to the context and evaluated inside many documents.
-
-Buck doesn't contain events or CSS or animation because that doesn't make many sense server side.
-
-More Bang
----------
+Use Deferred and promises to handle asynchronous results.
 
 ```js
+	// load multiple documents
 	$.when();
+
+
 ```
 
+Motivation
+----------
+
+Status
+------
+
+Acknowledgement
+---------------
+
+Buck is basically a wrapper around three awesome libraries with some additional sugar..
+
+* [jsdom] - Full DOM level 3 implementation out of the browser
+* [jquip] - jQuery in Parts
+* [Deferred] - jQuery Deferred
+
+[jsdom]: git://github.com/tmpvar/jsdom.git
+[jquip]: https://github.com/mythz/jquip
+[Deferred]: https://github.com/webspinner/Deferred
