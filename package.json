@@ -1,18 +1,20 @@
 {
   "name": "buck",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "var $ = require('buck'); // who needs buck anyway?",
   "main": "./lib/buck",
+  "engines": {
+    "node": ">=7.6.0"
+  },
   "directories": {
     "test": "tests"
   },
   "scripts": {
-    "test": "node ./tests/runtests.js",
-    "build": "./build/build.sh"
+    "test": "node ./tests/runtests.js"
   },
   "dependencies": {
-    "jsdom": ">=0.2",
-    "Deferred": "0.1.x"
+    "cheerio": "^1.0.0-rc.1",
+    "node-fetch": "^1.7.1"
   },
   "devDependencies": {
     "vows": ">=0.6"
