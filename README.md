@@ -6,41 +6,45 @@ Who needs buck anyway?
 ----------------------
 
 ```js
-	var $ = require('buck');
+	var buck = require('buck');
 ```
 
 What for?
 ---------
 
-Parse, Manipulate, Create new HTML content with your favorite jQuery-flavored API.
+Parse, manipulate, extract content from HTML pages with your favorite jQuery-flavored API.
+
+Use promises or async/await to handle results.
 
 ```js
-	// load an external document
-	var parse = $.fetchDocument("http://mypage.com");
+	async function parseBlog() {
 
-	parse.done(
-		function($) {
-			// this is tied to the newly parsed document
-			console.log("Successfully parsed document " + this.title);
-			// the new $ var is tied to the document context
-			var articleTitle = $("article h1").text();
-			// (...)
+		// load an external document
+		var $ = await buck.fetch("http://blog.mysite.com");
+
+		// $ is tied to the newly parsed document !
+		return {
+			title:   $("article h1").text(),
+			content: $("article .content").toMarkdown()
 		}
-	);
 
+	}
 ```
 
-Use Deferred and promises to handle asynchronous results.
-
-```js
-	// load multiple documents
-	$.when();
-
-
-```
 
 Motivations
 -----------
+
+Scrapping web pages is a recurring occupation in our troubled times but it doesn't have to be a ... _nightmare_.
+
+Well.. (cough, c*gh..) [Nightmare] _is_ a terrific project and it may well be your only way down if you are parsing _dynamic web pages_ (think single page apps), i.e. : if you must execute the javascript in your target pages to have the result you want.
+
+However, if you are still dealing with XXst century server-side HTML pages, well, you could have more bang for your bucks with.. you see who.
+
+buck is super simple and it doesn't come with 300Mo (counting..) of additional dependancies.
+More than that, it guides you through the true bliss of asynchronous code that doesn't suck. No more callback hell, just pure Promises that you can deal with async/await.
+
+[Nightmare]: https://github.com/segmentio/nightmare
 
 Status
 ------
@@ -52,21 +56,19 @@ Feel free to comment about the syntax, feature set..
 Acknowledgements
 ----------------
 
-Buck is basically a wrapper around three awesome libraries with some additional sugar..
+Buck is basically a wrapper around two awesome libraries with some additional sugar..
 
-* [jsdom] - Full DOM level 3 implementation out of the browser
-* [jquip] - jQuery in Parts
-* [Deferred] - jQuery Deferred
+* [node-fetch] - the fetch Web standard implementation for node.JS
+* [cheerio] - Full DOM level 3 implementation out of the browser
 
-[jsdom]: git://github.com/tmpvar/jsdom.git
-[jquip]: https://github.com/mythz/jquip
-[Deferred]: https://github.com/webspinner/Deferred
+[node-fetch]: https://github.com/bitinn/node-fetch
+[cheerio]: https://github.com/cheeriojs/cheerio
 
 # License
 
 (The MIT License)
 
-Copyright (c) 2012 Eidolon Labs. http://eidolon-labs.com
+Copyright (c) 2017 Eidolon Labs. http://eidolon-labs.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the 'Software'), to deal in
