@@ -10,11 +10,13 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "node ./tests/runtests.js"
+    "test": "vows tests/main-test.js --spec"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.1",
-    "node-fetch": "^1.7.1"
+    "es6-denodeify": "^0.1.5",
+    "node-fetch": "^1.7.1",
+    "real-isomorphic-fetch": "^1.2.2"
   },
   "devDependencies": {
     "vows": ">=0.6"
@@ -22,9 +24,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/zipang/buck.git"
-  },
-  "scripts": {
-    "test": "vows tests/main-test.js --spec"
   },
   "keywords": [
     "$",
